@@ -1,11 +1,18 @@
-
 import './App.css';
 import { Navbar,NavbarBrand } from 'reactstrap';
 import React,{Component} from "react";
 import Menu from './components/Menu';
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
+import {DISHES}  from './shared/dishes';
 
 class App extends Component {
+  constructor(props){
+  super(props);
+  this.state={
+    dishes: DISHES
+
+  }
+}
   render(){
     return (
      <div className='App'>
@@ -15,20 +22,15 @@ class App extends Component {
       </div>
       </Navbar> */
      }
-       
-  <Navbar
-    className="my-2"
-    color="danger"
-    dark
-  >
-    <NavbarBrand href="/">
-    Ristorante Con Fusion
-    </NavbarBrand>
-  </Navbar>
- 
-      <Menu/>
+     <nav class="navbar navbar-danger bg-danger">
+     <Navbar className="container" color='danger' dark> 
+    <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
+      </Navbar>
+  </nav>
+  
+      <Menu dishes={this.state.dishes}/>
   </div>
-   
+
   );
   }
 }
