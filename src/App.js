@@ -1,6 +1,6 @@
 import './App.css';
 import React,{Component} from "react";
-import "../node_modules/bootstrap/dist/css/bootstrap.css";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Main from './components/MainComponent';
 
 class App extends Component {

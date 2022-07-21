@@ -24,7 +24,7 @@ class Menu extends Component {
     const menu = this.props.dishes.map((item,index) => {
         return (
           <div key={index} className="col-12 mt-5">
-              <Media left middle onClick={()=>this.props.onClick(item)}>
+              <Media left middle onClick={() => this.props.onClick(item)}>
                   <Media object src={item.image} alt={item.name} />
               <Media body className="ml-5">
                 <Media heading>{item.name}</Media>
