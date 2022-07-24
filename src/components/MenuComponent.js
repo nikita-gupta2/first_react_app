@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Media,Card,CardBody,CardImg, CardTitle, CardText } from 'reactstrap';
+import { Media,Card,CardBody,CardImg, CardTitle, CardText, CardGroup } from 'reactstrap';
 
 
 
-class Menu extends Component {
-  renderDish(dish){
+
+const  renderDish=(dish)=>{
     if(dish!=null){
       return (
         <Card>
@@ -19,35 +19,37 @@ class Menu extends Component {
     }else {
       return <div></div>
     }
-  }
-  render() {
-    const menu = this.props.dishes.map((item,index) => {
-        return (
+  };
+    
+  const menu= (props)=> props.dishes.map((item,index) => {
+        return (  
+          
           <div key={index} className="col-12 mt-5">
-              <Media left middle onClick={() => this.props.onClick(item)}>
-                  <Media object src={item.image} alt={item.name} />
-              <Media body className="ml-5">
-                <Media heading>{item.name}</Media>
-                <Media>{item.description}</Media>
-              </Media>
-            </Media>
-          </div>
-        );
-    })
-
+          <Media left middle onClick={() => props.onClick(item)}>
+              <Media object src={item.image} alt={item.name} />
+          <Media body className="ml-5">
+            <Media heading>{item.name}</Media>
+            <Media>{item.description}</Media>
+          </Media>
+        </Media>
+      </div>
+              
+        )
+    });
+    function Menu (props){
     return (
       <div className="container">
         <div className="row">
           <Media list>
-              {menu}
+              {menu(props)}
           </Media>
         </div>
         <div className='row'>
-          {this.renderDish(this.props.selectedDish)}
+          {renderDish(props.selectedDish)}
         </div>
       </div>
     );
-}
-}
+    }
+
 
 export default Menu;
