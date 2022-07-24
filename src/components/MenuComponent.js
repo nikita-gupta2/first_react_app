@@ -1,55 +1,64 @@
 import React, { Component } from 'react';
-import { Media,Card,CardBody,CardImg, CardTitle, CardText, CardGroup } from 'reactstrap';
+import { Media,Card,CardBody,CardImg, CardTitle, CardText, CardGroup,CardImgOverlay, Row, Col } from 'reactstrap';
+import Details from './DishdetailComponent';
 
+//   const renderDish=(dish)=>{
+//   if(dish!=null){
+//     return (
+//       <Card>
+//         <CardImg src={dish.image} alt={dish.name} top />
+//         <CardBody>
+//           <CardTitle>{dish.name}
+//           </CardTitle>
+//           <CardText>{dish.description}</CardText>
+//         </CardBody>
+//       </Card>
+//     );
+//   }else {
+//     return <div></div>
+//   }
+// };
 
+ const menu= (props)=> props.dishes.map((item,index) => {
+  return (  
 
-
-const  renderDish=(dish)=>{
-    if(dish!=null){
-      return (
-        <Card>
-          <CardImg src={dish.image} alt={dish.name} top />
-          <CardBody>
-            <CardTitle>{dish.name}
-            </CardTitle>
-            <CardText>{dish.description}</CardText>
-          </CardBody>
-        </Card>
-      );
-    }else {
-      return <div></div>
-    }
-  };
-    
-  const menu= (props)=> props.dishes.map((item,index) => {
-        return (  
-          
-          <div key={index} className="col-12 mt-5">
-          <Media left middle onClick={() => props.onClick(item)}>
-              <Media object src={item.image} alt={item.name} />
+    <div key={index} className="flex-container">
+      <Media left middle onClick={() => props.onClick(item)}>
+              {/* <Media object src={item.image} alt={item.name} />
           <Media body className="ml-5">
             <Media heading>{item.name}</Media>
             <Media>{item.description}</Media>
-          </Media>
+          </Media> */}
+          {/* <div className='flex container'> */}
+          <Col sm="6">
+          <Card style={{width: '18rem'}}>
+        <CardImg alt={item.name} src={item .image}/>
+        
+        <CardImgOverlay>
+      <CardTitle >
+        <h5 className='d-flex p-2'>{item.name}</h5>
+      </CardTitle>
+      </CardImgOverlay>
+        </Card>
+        </Col>
         </Media>
-      </div>
-              
+        {/* </div> */}
+          </div>
+
         )
     });
-    function Menu (props){
-    return (
+    function Menu (props){return (
       <div className="container">
         <div className="row">
-          <Media list>
-              {menu(props)}
-          </Media>
+          <Row xs>
+          {menu(props)}
+          </Row>
         </div>
         <div className='row'>
-          {renderDish(props.selectedDish)}
+        <Details selectedDish={props.selectedDish}/>
         </div>
-      </div>
+        </div>
     );
-    }
-
-
+}
+      
 export default Menu;
