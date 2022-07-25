@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import { Media,Card,CardBody,CardImg, CardTitle, CardText, CardGroup,CardImgOverlay, Row, Col, NavItem } from 'reactstrap';
 
-class Details extends Component {
+class Dishdetails extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedDish:null,
+}
+
+}
   renderDish(dish){
     if(dish!=null){
     return (
-      <Row>
         <Col sm="6">
       <Card>
         <CardImg src={dish.image} alt={dish.name} top />
@@ -16,23 +22,39 @@ class Details extends Component {
           </CardBody>
         </Card>
         </Col>
-        </Row>
         );
   }
   else {
     return <div></div>
   }
 }
+renderComments(Comments){
+<h4 className='d-flex p-2'>Comments</h4>
 
-render() {
-    return (
-      <div className="container"> 
-        <div className='row'>
-          {this.renderDish(this.props.selectedDish)}
-        </div>
-      </div>
-    );
-  }
 }
 
-export default Details;
+render() {
+    return(
+        <div className='container'>
+          <div className='row'>
+            <div className='col-sm'>
+              <div className='m-1'>
+            {this.renderDish(this.props.selectedDish)}
+
+              </div>
+            </div>
+            <div className='col-sm'>
+              <div className='m-1'>
+            
+
+              </div>
+            </div>
+          </div>
+          </div>
+
+            )
+    }     
+  }
+
+
+export default Dishdetails;

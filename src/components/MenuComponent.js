@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Media,Card,CardBody,CardImg, CardTitle, CardText, CardGroup,CardImgOverlay, Row, Col } from 'reactstrap';
-import Details from './DishdetailComponent';
+import Dishdetails from './DishdetailComponent';
 
 //   const renderDish=(dish)=>{
 //   if(dish!=null){
@@ -55,7 +55,7 @@ import Details from './DishdetailComponent';
           </Row>
         </div>
         <div className='row'>
-        <Details selectedDish={props.selectedDish}/>
+        <Dishdetails selectedDish={props.selectedDish}/>
         </div>
         </div>
     );
