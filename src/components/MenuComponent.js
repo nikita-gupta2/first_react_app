@@ -27,7 +27,7 @@ import Dishdetails from './DishdetailComponent';
  )}
 
 function Menu (props){return (
-<div className="container">
+<div className="container" my-5 >
   <div className="row">
     < Media list>{menu(props)}</Media>
   </div>
