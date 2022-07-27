@@ -28,3 +28,23 @@
   .navbar-dark {
   background-color: #512DA8;
   }
+  .heading-div{
+    position: relative;
+  }
+  .backgroundimg{
+    height: 300px;
+    width: 100%;
+  }
+  .heading{
+    position:absolute;
+    top:0;
+    padding: 40px;
+
+  }
+  .heading h5{
+    font-size: 2em;
+  }
+  .heading p{
+    font-size: 1.5em;
+  }
+ 

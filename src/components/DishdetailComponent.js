@@ -10,7 +10,7 @@ const  renderDish=(dish)=>{
             <Card>
               <CardImg src={dish.image} alt={dish.name} top />
               <CardBody>
-                <CardTitle><h5 className='d-flex p-2'>{dish.name}</h5></CardTitle>
+                <CardTitle><h5 className>{dish.name}</h5></CardTitle>
                 <CardText>{dish.description}</CardText>
               </CardBody>
             </Card>
@@ -26,11 +26,11 @@ const  renderComments=(dish)=>{
   if (dish != null) {
     return (
       <div>
-        <h4 className='d-flex p-2'>Comments</h4>
+        <h4 className=''>Comments</h4>
           {dish.comments.map((item,index)=>{
             return( <div>
-              <p className='d-flex p-2'>{item.comment}</p>
-              <p className='d-flex p-2'>--{item.author}, {item.date}</p>
+              <p className=''>{item.comment}</p>
+              <p className=''>--{item.author}, {item.date}</p>
             </div>                 
          )
          })
