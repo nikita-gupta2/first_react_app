@@ -1,42 +1,54 @@
 import React, { Component } from 'react';
-import { Media,Card,CardBody,CardImg, CardTitle, CardText, CardGroup,CardImgOverlay, Row, Col } from 'reactstrap';
+import { Media,Card,CardBody,CardImg, CardTitle, CardText, CardGroup,CardImgOverlay, Row, Col,Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import Dishdetails from './DishdetailComponent';
+import { Link } from 'react-router-dom';
 
 
 
- const menu= (props)=>{
+ function Menu (props){
+  function RenderMenuItem({dish,onClick}){
   return(
-  <Row>
-  { 
-  props.dishes.map((item,index) => {
-  return (  
-  <Col  key={index} onClick={() => props.onClick(item) }  md='5' sm="12" xs="12">
-    <Card inverse>
-      <CardImg alt={item.name} src={item .image} width="100%" />
-      <CardImgOverlay>
-        <CardTitle style={{color:"black"}}>
-          <h5  className>  {item.name}</h5>
-        </CardTitle>
-      </CardImgOverlay>
-    </Card>
-  </Col>)
- }
+  <Col sm={6}>
+    <Card>
+<Link to={`/menu/${dish.id}`} >
+<CardImg width="100%" src={dish.image}
+alt={dish.name} />
+<CardImgOverlay>
+<CardTitle>{dish.name}</CardTitle>
+</CardImgOverlay>
+</Link>
+</Card>
+
+  </Col>  
+  
  )
  }
- </Row>
- )}
+ 
+const menu = props.dishes.map((item,index)=>{
+  return(<RenderMenuItem key={index} dish={item}/>)
+ });
 
-function Menu (props){return (
-<div className="container" >
-  <div className="row">
-    < Media list>{menu(props)}</Media>
-  </div>
-  <div className='row'>
-    <Dishdetails selectedDish={props.selectedDish}/>
-    {/* <Dishdetails onClick={(dishId)=>props.onSelectDish(dishId)} */}
-      {/* selectedDish={props.selectedDish}/>  */}
-  </div>
+
+
+  return (
+<div className="container">
+<div className="row">
+<Breadcrumb>
+<BreadcrumbItem><Link
+to="/home">Home</Link></BreadcrumbItem>
+<BreadcrumbItem
+active>Menu</BreadcrumbItem>
+</Breadcrumb>
+<div className="col-12">
+<h3>Menu</h3>
+<hr />
 </div>
+</div>
+<div className="row">
+{menu}
+</div>
+</div>
+
 );
 }
       

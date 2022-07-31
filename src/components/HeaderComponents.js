@@ -49,7 +49,7 @@ className="fa fa-info fa-lg"></span> About Us</NavLink>
 className="fa fa-list fa-lg"></span> Menu</NavLink>
  </NavItem>
  <NavItem>
- <NavLink className="nav-link" to='/contactus'><span
+ <NavLink className="nav-link" to='/contact'><span
 className="fa fa-address-card fa-lg"></span> Contact Us</NavLink>
  </NavItem>
  </Nav>
