@@ -38,7 +38,7 @@ const  renderComments=(comments)=>{
 
 return(
       <div className='container'>
-        <Row>
+       <Row>
           <Breadcrumb>
         <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
           

@@ -1,27 +1,43 @@
 import React from 'react';
 import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import "../App.css" 
 
 function About(props) {
-   
-    function RenderLeader({leader}){
-        return( 
-         <div class="card">
-         <div class="row no-gutters">
-             <div class="col-auto">
-                 <img src={leader.image} class="img-fluid" alt=""/>
-             </div>
-             <div class="col">
-                 <div class="card-block px-2">
-                     <h3 class="card-title">{leader.name}</h3>
-                     <p class="card-text">{leader.designation}</p>
-                     <br/>
-                     <p>{leader.description}</p>
-                 </div>
-             </div>
-         </div>
-   </div>)
-     }
+function RenderLeader({leader}){
+        return (
+
+            <div className="">
+
+              <Media className='row mb-4'>
+                  <img
+        alt="img"
+        height={100}
+        width={100}
+        className="mr-3 col-auto" src={leader.image}
+      />
+       <Media body className='col'>
+        <h5 className='leader-heading'>{leader.name}</h5>
+        <p className='leader-desi'>{leader.designation}</p>
+        <p className='leader-desc'>
+          {leader.description}
+        </p>
+
+      </Media>
+              </Media>
+            </div>
+          );     
+        }
+
+    // const LeadDesc = props.leaders.map((leader,index) => {
+       
+        
+    //         <RenderLeader key={index} leader={leader}/>
+    
+       
+        
+    // }
+//     )
      const Leaders=props.leaders.map((leader,index)=>
      <RenderLeader key={index} leader={leader}/>)
     
