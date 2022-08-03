@@ -40,7 +40,6 @@ class Header extends Component {
   render() {
     return (
       <React.Fragment>
-        
         <Navbar dark>
           <div className="container">
             <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
@@ -105,7 +104,6 @@ class Header extends Component {
           <div className=" heading-div">
             <img
               className="backgroundimg"
-              
               src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?cs=srgb&dl=pexels-ella-olsson-1640777.jpg&fm=jpg"
               alt="Img"
             />
