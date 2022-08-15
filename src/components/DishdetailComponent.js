@@ -52,7 +52,7 @@ const Dishdetails = (props) => {
       </div>
     );
   };
-
+  
   return (
     <div className="container">
       <Row>
