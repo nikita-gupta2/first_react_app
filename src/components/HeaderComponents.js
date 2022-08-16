@@ -166,6 +166,7 @@ event.preventDefault();
                 </Nav>
               </Collapse>
             </div>
+    
           </Navbar>
 
           <div className=" heading-div">

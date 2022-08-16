@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component,useState } from "react";
 import {
   Media,
   Card,
@@ -12,11 +12,17 @@ import {
   BreadcrumbItem,
   Row,
   Col,
+  Button,
   NavItem,
 } from "reactstrap";
 
 import { Link } from "react-router-dom";
+import CommentForm from "./CommentForm";
+ 
+
+
 const Dishdetails = (props) => {
+
   const renderDish = (dish) => {
     return (
       <Col>
@@ -32,7 +38,6 @@ const Dishdetails = (props) => {
       </Col>
     );
   };
-
   const renderComments = (comments) => {
     return (
       <div>
@@ -46,9 +51,11 @@ const Dishdetails = (props) => {
                   --{item.author},{item.date}
                 </small>
               </p>
+
             </div>
           );
         })}
+                      <CommentForm/>
       </div>
     );
   };
@@ -73,6 +80,7 @@ const Dishdetails = (props) => {
         <Col md="5" sm="12" xs="12">
           <div className="m-1">{renderComments(props.comments)}</div>
         </Col>
+     
       </Row>
     </div>
   );
