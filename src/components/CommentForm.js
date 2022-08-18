@@ -1,19 +1,9 @@
 import React, { Component } from "react";
 import {
-  Navbar,
-  NavbarBrand,
-  Nav,
-  NavbarToggler,
-  Collapse,
-  NavItem,
-  Jumbotron,
   Button,
   Modal,
   ModalHeader,
   ModalBody,
-  Form,
-  FormGroup,
-  Input,
   Label,
   Row,
   Col,
@@ -26,7 +16,7 @@ class CommentForm extends Component {
 
     this.toggleNav = this.toggleNav.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
-    this.handleLogin = this.handleLogin.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
       isNavOpen: false,
       isModalOpen: false,
@@ -42,10 +32,8 @@ class CommentForm extends Component {
       isModalOpen: !this.state.isModalOpen,
     });
   }
-  handleLogin(event) {
-    this.toggleModal();
-    alert("Your Name " + this.YourName.value);
-    event.preventDefault();
+  handleSubmit(values) {
+    alert("Current State is: " + JSON.stringify(values));
   }
 
   render() {
@@ -54,34 +42,39 @@ class CommentForm extends Component {
     const minLength = (len) => (val) => val && val.length >= len;
     return (
       <div>
-        <Button outline onClick={this.toggleModal}  >
+        <Button outline onClick={this.toggleModal}>
           <span className="fa fa-light fa-pencil "></span> Submit Comment
         </Button>
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
           <ModalHeader toggle={this.toggleModal}>Submit Comment</ModalHeader>
           <ModalBody>
-            <LocalForm onSubmit={(values) => this.handleLogin(values)}>
+            <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
               <Row className="form-group">
-                <Label htmlFor="Rating" md={4}>
+                <Label htmlFor="rating" md={4}>
                   Rating
                 </Label>
                 <Col md={15}>
-                  <Control.text
+                  <Control.select
                     type="number"
-                    model=".Rating"
-                    name="Rating"
+                    model=".rating"
+                    name="rating"
                     className="form-control"
-                    placeholder="1"
-                  ></Control.text>
+                  >
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </Control.select>
                 </Col>
-                <Label htmlFor="YourName" md={4}>
+                <Label htmlFor="yourname" md={4}>
                   Your Name
                 </Label>
                 <Col md={15}>
                   <Control.text
-                    model=".YourName"
-                    id="YourName"
-                    name="YourName"
+                    model=".yourname"
+                    id="yourname"
+                    name="yourname"
                     placeholder="Your Name"
                     className="form-control"
                     validators={{
@@ -92,7 +85,7 @@ class CommentForm extends Component {
                   />
                   <Errors
                     className="text-danger"
-                    model=".YourName"
+                    model=".yourname"
                     show="touched"
                     messages={{
                       required: "Required ",
@@ -124,40 +117,6 @@ class CommentForm extends Component {
                 </Col>
               </Row>
             </LocalForm>
-            {/* <Form onSubmit={this.handleLogin}>
-                  <FormGroup>
-                    <Label htmlFor="username">Rating</Label>
-                    <Input
-                      type="text"
-                      id="username"
-                      name="username"
-                      innerRef={(input) => (this.username = input)}
-                    />
-                  </FormGroup>
-                  <FormGroup>
-                    <Label htmlFor="password">Password</Label>
-                    <Input
-                      type="password"
-                      id="password"
-                      name="password"
-                      innerRef={(input) => (this.password = input)}
-                    />
-                  </FormGroup>
-                  <FormGroup check>
-                    <Label check>
-                      <Input
-                        type="checkbox"
-                        name="remember"
-                        innerRef={(input) => (this.remember = input)}
-                      />
-                      Remember me
-                    </Label>
-                  </FormGroup>
-                  <Button type="submit" value="submit" color="primary">
-                  <span className="fa-solid fa-pencil"></span>
-                    Submit a Comment
-                  </Button>
-                </Form> */}
           </ModalBody>
         </Modal>
       </div>
