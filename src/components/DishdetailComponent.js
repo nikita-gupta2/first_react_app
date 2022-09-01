@@ -42,11 +42,11 @@ const Dishdetails = (props) => {
     return (
       <div>
         <h4 className="d-flex p-2">Comments</h4>
-        {comments.slice(0, 5).map((item, index) => {
+        {comments.map((item, index) => {
           return (
             <div key={index}>
               <p>
-                {item.comment} <br />{" "}
+                {item.comment} <br />
                 <small>
                   --{item.author},{item.date}
                 </small>
@@ -55,7 +55,7 @@ const Dishdetails = (props) => {
             </div>
           );
         })}
-                      <CommentForm/>
+              <CommentForm dishId={props.dish.id} addComment={props.addComment} />
       </div>
     );
   };
@@ -71,7 +71,7 @@ const Dishdetails = (props) => {
           <BreadcrumbItem>
             <Link to="/menu">Menu</Link>
           </BreadcrumbItem>
-          <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
+          <BreadcrumbItem activeu>{props.dish.name}</BreadcrumbItem>
         </Breadcrumb>
 
         <Col md="5" sm="12" xs="12">
