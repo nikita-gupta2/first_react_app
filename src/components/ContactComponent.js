@@ -7,7 +7,7 @@ import {
   Col,
   Label,
 } from "reactstrap";
-import { Control, LocalForm, Errors } from "react-redux-form";
+import { Control, LocalForm, Errors,Form } from "react-redux-form";
 import { Link } from "react-router-dom";
 
 class Contact extends Component {
@@ -15,6 +15,7 @@ class Contact extends Component {
     console.log("Current State is: " + JSON.stringify(values));
     alert("Current State is: " + JSON.stringify(values));
     // event.preventDefault();
+    this.props.resetFormFeedback();
   }
   render() {
     // const errors = this.validate(
