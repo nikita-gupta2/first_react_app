@@ -1,4 +1,4 @@
-import React, { Component,useState } from "react";
+import React, { Component, useState } from "react";
 import {
   Media,
   Card,
@@ -18,11 +18,9 @@ import {
 
 import { Link } from "react-router-dom";
 import CommentForm from "./CommentForm";
- 
-
+import { Loading } from "./LoadingComponent";
 
 const Dishdetails = (props) => {
-
   const renderDish = (dish) => {
     return (
       <Col>
@@ -51,39 +49,53 @@ const Dishdetails = (props) => {
                   --{item.author},{item.date}
                 </small>
               </p>
-
             </div>
           );
         })}
-              <CommentForm dishId={props.dish.id} addComment={props.addComment} />
+        <CommentForm dishId={props.dish.id} addComment={props.addComment} />
       </div>
     );
   };
-  
-  return (
-    <div className="container">
-      <Row>
-        <Breadcrumb>
-          <BreadcrumbItem>
-            <Link to="/home">Home</Link>
-          </BreadcrumbItem>
+  if (props.isLoading) {
+    return (
+      <div className="container">
+        <div className="row">
+          <Loading />
+        </div>
+      </div>
+    );
+  } else if (props.errMess) {
+    return (
+      <div className="container">
+        <div className="row">
+          <h4>{props.errMess}</h4>
+        </div>
+      </div>
+    );
+  } else if (props.dish != null)
+    return (
+      <div className="container">
+        <Row>
+          <Breadcrumb>
+            <BreadcrumbItem>
+              <Link to="/home">Home</Link>
+            </BreadcrumbItem>
 
-          <BreadcrumbItem>
-            <Link to="/menu">Menu</Link>
-          </BreadcrumbItem>
-          <BreadcrumbItem activeu>{props.dish.name}</BreadcrumbItem>
-        </Breadcrumb>
+            <BreadcrumbItem>
+              <Link to="/menu">Menu</Link>
+            </BreadcrumbItem>
+            <BreadcrumbItem activeu>{props.dish.name}</BreadcrumbItem>
+          </Breadcrumb>
 
-        <Col md="5" sm="12" xs="12">
-          <div className="m-1">{renderDish(props.dish)}</div>
-        </Col>
-        <Col md="5" sm="12" xs="12">
-          <div className="m-1">{renderComments(props.comments)}</div>
-        </Col>
-     
-      </Row>
-    </div>
-  );
+          <Col md="5" sm="12" xs="12">
+            <div className="m-1">{renderDish(props.dish)}</div>
+          </Col>
+          <Col md="5" sm="12" xs="12">
+            <div className="m-1">{renderComments(props.comments)}</div>
+          </Col>
+        </Row>
+      </div>
+    );
 };
 
 export default Dishdetails;
