@@ -15,7 +15,7 @@ import {
   Button,
   NavItem,
 } from "reactstrap";
-
+import { baseUrl } from '../shared/baseUrl';
 import { Link } from "react-router-dom";
 import CommentForm from "./CommentForm";
 import { Loading } from "./LoadingComponent";
@@ -25,7 +25,7 @@ const Dishdetails = (props) => {
     return (
       <Col>
         <Card>
-          <CardImg src={dish.image} alt={dish.name} top />
+        <CardImg top src={baseUrl + dish.image} alt={dish.name} />
           <CardBody>
             <CardTitle>
               <h5 className>{dish.name}</h5>
