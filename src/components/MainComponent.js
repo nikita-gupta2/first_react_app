@@ -13,6 +13,7 @@ import {
   fetchDishes,
   fetchComments,
   fetchPromos,
+  postComment,
 } from "../redux/ActionCreators";
 import { actions } from "react-redux-form";
 const mapStateToProps = (state) => {
@@ -26,32 +27,18 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   addComment: (dishId, rating, author, comment) =>
     dispatch(addComment(dishId, rating, author, comment)),
-  fetchDishes: () => {
-    dispatch(fetchDishes());
-  },
-  resetFeedbackForm: () => {
-    dispatch(actions.reset("feedback"));
-  },
+  fetchDishes: () => 
+    dispatch(fetchDishes()),
+
+  resetFeedbackForm: () => 
+    dispatch(actions.reset("feedback")),
   fetchComments: () => dispatch(fetchComments()),
   fetchPromos: () => dispatch(fetchPromos()),
+  postComment:(dishId,rating,author,comment)=>dispatch
+  (postComment(dishId,rating,author,comment))
 });
 class Main extends Component {
-  constructor(props) {
-    super(props);
-    //   this.state = {
-    //     dishes: DISHES,
-    //     comments: COMMENTS,
-    //     promotions: PROMOTIONS,
-    //     leader: LEADERS,
-    //     selectedDish: null,
-    //   };
-    // }
-    // onSelectDish(dishId) {
-    //   this.setState({
-    //     selectedDish: dishId,
-    //   });
-    // }
-  }
+  
   componentDidMount() {
     this.props.fetchDishes();
     this.props.fetchComments();
@@ -80,16 +67,16 @@ class Main extends Component {
         <Dishdetails
           dish={
             this.props.dishes.dishes.filter(
-              (dish) => dish.id === parseInt(match.params.dishId, 10)
+              (dish,index) => dish.id === parseInt(match.params.id, 10)
             )[0]
           }
           isLoading={this.props.dishes.isLoading}
           errMess={this.props.dishes.errMess}
           comments={this.props.comments.comments.filter(
-            (comment) => comment.dishId === parseInt(match.params.dishId, 10)
+            (comment,index) => comment.dishId === parseInt(match.params.id, 10)
           )}
           commentsErrMess={this.props.comments.errMess}
-          addComment={this.props.addComment}
+          postComment={this.props.postComment}
         />
       );
     };

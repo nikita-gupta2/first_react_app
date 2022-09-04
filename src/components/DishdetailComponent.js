@@ -52,7 +52,7 @@ const Dishdetails = (props) => {
             </div>
           );
         })}
-        <CommentForm dishId={props.dish.id} addComment={props.addComment} />
+        <CommentForm dishId={props.dish.id} postComment={props.postComment} />
       </div>
     );
   };
