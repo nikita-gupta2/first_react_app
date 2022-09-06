@@ -9,13 +9,18 @@ import {
 } from "reactstrap";
 import { Control, LocalForm, Errors,Form } from "react-redux-form";
 import { Link } from "react-router-dom";
+import { Loading } from "./LoadingComponent";
+import {baseUrl} from "../shared/baseUrl";
+import * as ActionTypes from '../redux/ActionTypes';
 
 class Contact extends Component {
   handleSubmit(values) {
     console.log("Current State is: " + JSON.stringify(values));
-    alert("Current State is: " + JSON.stringify(values));
+    alert("Thank you for your feedback!" +" Current State is: " + JSON.stringify(values));
     // event.preventDefault();
-    this.props.resetFormFeedback();
+    // this.props.resetFormFeedback();
+    this.props.postFeedback(values.firstname, values.lastname, values.telnum,
+      values.email,values.agree,values.contactType,values.message);
   }
   render() {
     // const errors = this.validate(

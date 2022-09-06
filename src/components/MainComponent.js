@@ -14,7 +14,8 @@ import {
   fetchComments,
   fetchPromos,
   postComment,
-  fetchLeaders
+  fetchLeaders,
+  postFeedback
 } from "../redux/ActionCreators";
 import { actions } from "react-redux-form";
 const mapStateToProps = (state) => {
@@ -23,6 +24,7 @@ const mapStateToProps = (state) => {
     comments: state.comments,
     promotions: state.promotions,
     leaders: state.leaders,
+    feedback:state.feedback
   };
 };
 const mapDispatchToProps = (dispatch) => ({
@@ -38,7 +40,9 @@ const mapDispatchToProps = (dispatch) => ({
   fetchLeaders: () =>  dispatch(fetchLeaders()),
 
   postComment:(dishId,rating,author,comment)=>dispatch
-  (postComment(dishId,rating,author,comment))
+  (postComment(dishId,rating,author,comment)),
+  postFeedback:(firstname, lastname, telnum, email,agree,contactType,message)=>
+  dispatch(postFeedback(firstname, lastname, telnum, email,agree,contactType,message))
 });
 class Main extends Component {
   
@@ -108,7 +112,9 @@ class Main extends Component {
             exact
             path="/contact"
             component={() => (
-              <Contact resetFormFeedback={this.props.resetFormFeedback} />
+              <Contact resetFormFeedback={this.props.resetFormFeedback}
+          postFeedback={this.props.postFeedback}
+          />
             )}
           />
 

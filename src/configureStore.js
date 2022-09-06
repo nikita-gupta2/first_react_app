@@ -6,7 +6,7 @@ import {Comments} from "./redux/comments";
 import {Promotions} from "./redux/promotions";
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-import { IntialFeedback } from './redux/forms';
+import { IntialFeedback } from './redux/feedback';
 export const ConfigureStore = () => {
 const store = createStore(
 
